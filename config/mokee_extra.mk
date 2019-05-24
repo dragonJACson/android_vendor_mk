@@ -3,3 +3,4 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     ro.recents.grid=false
 
 -include vendor/mk-priv/config/mokee_private.mk
+-include vendor/pixelstyle/config.mk

@@ -91,6 +91,11 @@ PRODUCT_COPY_FILES += \
     vendor/mk/config/permissions/privapp-permissions-lawnchair.xml:system/etc/permissions/privapp-permissions-lawnchair.xml \
     vendor/mk/config/permissions/privapp-permissions-mokee.xml:system/etc/permissions/privapp-permissions-mokee.xml
 
+# Weather Client
+PRODUCT_COPY_FILES += \
+    vendor/mk/config/permissions/org.pixelexperience.weather.client.xml:system/etc/permissions/org.pixelexperience.weather.client.xml \
+    vendor/mk/config/permissions/org.pixelexperience.weather.client-default.xml:system/etc/default-permissions/org.pixelexperience.weather.client.xml
+
 # Hidden API whitelist
 PRODUCT_COPY_FILES += \
     vendor/mk/config/permissions/lawnchair-hiddenapi-package-whitelist.xml:system/etc/sysconfig/lawnchair-hiddenapi-package-whitelist.xml \
@@ -122,8 +127,8 @@ PRODUCT_ART_TARGET_INCLUDE_DEBUG_BUILD := false
 PRODUCT_MINIMIZE_JAVA_DEBUG_INFO := true
 
 # Bootanimation
-PRODUCT_PACKAGES += \
-    bootanimation.zip
+# PRODUCT_PACKAGES += \
+#    bootanimation.zip
 
 # Required MoKee packages
 PRODUCT_PACKAGES += \
@@ -149,6 +154,7 @@ PRODUCT_PACKAGES += \
     MoKeeSetupWizard \
     MoKeeWeatherProvider \
     WallpaperPicker \
+    WeatherClient \
     WeatherProvider
 
 # Exchange support
