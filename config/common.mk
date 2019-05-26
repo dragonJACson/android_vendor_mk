@@ -96,6 +96,11 @@ PRODUCT_COPY_FILES += \
     vendor/mk/config/permissions/org.pixelexperience.weather.client.xml:system/etc/permissions/org.pixelexperience.weather.client.xml \
     vendor/mk/config/permissions/org.pixelexperience.weather.client-default.xml:system/etc/default-permissions/org.pixelexperience.weather.client.xml
 
+# GCam
+PRODUCT_COPY_FILES += \
+    vendor/mk/config/permissions/android.hardware.camera.raw.xml:system/etc/permissions/android.hardware.camera.raw.xml \
+		vendor/mk/config/permissions/android.hardware.camera.full.xml:system/etc/permissions/android.hardware.camera.full.xml
+
 # Hidden API whitelist
 PRODUCT_COPY_FILES += \
     vendor/mk/config/permissions/lawnchair-hiddenapi-package-whitelist.xml:system/etc/sysconfig/lawnchair-hiddenapi-package-whitelist.xml \
