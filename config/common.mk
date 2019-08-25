@@ -101,6 +101,10 @@ PRODUCT_COPY_FILES += \
     vendor/mk/config/permissions/android.hardware.camera.raw.xml:system/etc/permissions/android.hardware.camera.raw.xml \
 		vendor/mk/config/permissions/android.hardware.camera.full.xml:system/etc/permissions/android.hardware.camera.full.xml
 
+# Enforce privapp-permissions whitelist
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
+    ro.control_privapp_permissions=log
+
 # Hidden API whitelist
 PRODUCT_COPY_FILES += \
     vendor/mk/config/permissions/lawnchair-hiddenapi-package-whitelist.xml:system/etc/sysconfig/lawnchair-hiddenapi-package-whitelist.xml \
