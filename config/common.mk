@@ -204,8 +204,7 @@ PRODUCT_PACKAGES += \
     unrar \
     unzip \
     wget \
-    zip \
-    mkchecker
+    zip
 
 # Charger
 PRODUCT_PACKAGES += \
