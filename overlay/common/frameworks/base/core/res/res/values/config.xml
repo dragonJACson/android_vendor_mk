@@ -25,7 +25,7 @@
     <bool name="config_cellBroadcastAppLinks">true</bool>
 
     <!-- Disable stock OTA components if installed -->
-    <string-array name="config_disabledComponents" translatable="false">
+    <string-array name="config_globallyDisabledComponents" translatable="false">
         <item>com.google.android.gsf/com.google.android.gsf.update.SystemUpdateActivity</item>
         <item>com.google.android.gsf/com.google.android.gsf.update.SystemUpdateService$Receiver</item>
         <item>com.google.android.gsf/com.google.android.gsf.update.SystemUpdateService$SecretCodeReceiver</item>
@@ -101,6 +101,6 @@
           to fetching and presenting recent tasks. The default configuration uses Launcehr3QuickStep as default launcher and points to
           the corresponding recents component. When using a different default launcher, change this appropriately or use the default
           systemui implementation: com.android.systemui/.recents.RecentsActivity -->
-    <string name="config_recentsComponentName" translatable="false">ch.deletescape.lawnchair.ci/com.android.quickstep.RecentsActivity</string>
+    <string name="config_recentsComponentName" translatable="false">ch.deletescape.lawnchair.mokee/com.android.quickstep.RecentsActivity</string>
 
 </resources>
