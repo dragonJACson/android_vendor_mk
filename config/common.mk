@@ -269,33 +269,28 @@ DEVICE_PACKAGE_OVERLAYS += vendor/mk/overlay/common
 PRODUCT_VERSION_MAJOR = 90
 PRODUCT_VERSION_MINOR = 0
 
-ifneq ($(filter mokee buildbot-0x,$(shell python -c 'import os;print os.uname()[1][:11]')),)
-    ifdef MK_NIGHTLY
-        MK_BUILDTYPE := NIGHTLY
-    else ifdef MK_RELEASE
-        MK_BUILDTYPE := RELEASE
-    else ifdef MK_HISTORY
-        MK_BUILDTYPE := HISTORY
+# Filter out random types, so it'll reset to EXPERIMENTAL
+ifeq ($(filter EXPERIMENTAL HISTORY NIGHTLY PREMIUM RELEASE,$(MK_BUILDTYPE)),)
+    MK_BUILDTYPE :=
+else ifneq ($(filter HISTORY NIGHTLY RELEASE,$(MK_BUILDTYPE)),)
+    ifeq ($(filter mokee buildbot-0x,$(shell python -c 'import os;print os.uname()[1][:11]')),)
+        MK_BUILDTYPE :=
     endif
 endif
 
 ifndef MK_BUILDTYPE
-    ifdef MK_PREMIUM
-        MK_BUILDTYPE := PREMIUM
+    MK_BUILDTYPE := EXPERIMENTAL
+endif
+
+ifndef MK_BUILD_DATE
+    ifneq ($(filter HISTORY RELEASE,$(MK_BUILDTYPE)),)
+        MK_BUILD_DATE := $(shell date +%y%m%d)
     else
-        MK_BUILDTYPE := EXPERIMENTAL
+        MK_BUILD_DATE := $(shell date +%Y%m%d%H%M)
     endif
 endif
 
-ifneq ($(filter RELEASE HISTORY,$(MK_BUILDTYPE)),)
-    ifdef MK_BUILD_DATE
-        MK_VERSION := MK$(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR)-$(MK_BUILD)-$(MK_BUILD_DATE)-$(MK_BUILDTYPE)
-    else
-        MK_VERSION := MK$(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR)-$(MK_BUILD)-$(shell date +%y%m%d)-$(MK_BUILDTYPE)
-    endif
-else
-    MK_VERSION := MK$(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR)-$(MK_BUILD)-$(shell date +%Y%m%d%H%M)-$(MK_BUILDTYPE)
-endif
+MK_VERSION := MK$(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR)-$(MK_BUILD)-$(MK_BUILD_DATE)-$(MK_BUILDTYPE)
 
 PRODUCT_EXTRA_RECOVERY_KEYS += \
     vendor/mk/build/target/product/security/mokee
